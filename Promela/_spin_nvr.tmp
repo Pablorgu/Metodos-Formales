@@ -1,0 +1,11 @@
+never no_mas_de_una {    /* !([] (<> (! (((((Puerta[0]@ABIERTA)) && ((Puerta[1]@ABIERTA))) || (((Puerta[1]@ABIERTA)) && ((Puerta[2]@ABIERTA)))) || (((Puerta[2]@ABIERTA)) && ((Puerta[0]@ABIERTA))))))) */
+T0_init:
+	do
+	:: (! ((! (((((Puerta[0]@ABIERTA)) && ((Puerta[1]@ABIERTA))) || (((Puerta[1]@ABIERTA)) && ((Puerta[2]@ABIERTA)))) || (((Puerta[2]@ABIERTA)) && ((Puerta[0]@ABIERTA))))))) -> goto accept_S4
+	:: (1) -> goto T0_init
+	od;
+accept_S4:
+	do
+	:: (! ((! (((((Puerta[0]@ABIERTA)) && ((Puerta[1]@ABIERTA))) || (((Puerta[1]@ABIERTA)) && ((Puerta[2]@ABIERTA)))) || (((Puerta[2]@ABIERTA)) && ((Puerta[0]@ABIERTA))))))) -> goto accept_S4
+	od;
+}
