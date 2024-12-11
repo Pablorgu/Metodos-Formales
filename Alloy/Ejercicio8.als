@@ -7,7 +7,7 @@ sig Asignatura{
 //hechos
 fact{
 	//1.Ninguna asignatura puede tener mas de 10 estudiantes matriculados
-	always all a:Asignatura |  #a.matriculados <= 7
+	always all a:Asignatura |  #a.matriculados <= 10
 	
 	//2. Los estudiantes aprobados deben esar matriculados en la asignatura
 	always all a:Asignatura | a.aprobados in a.matriculados
@@ -15,7 +15,7 @@ fact{
 //predicados
 pred show(){}
 
-run show for 5 Asignatura, 3 Estudiante
+run show for 5 but 6 Int
 
 pred Inicio(){
 	one a: Asignatura |
@@ -36,7 +36,7 @@ pred matricular(a: Asignatura, e: Estudiante) {
 
 pred aprobar(a: Asignatura, e: Estudiante) {
 	//pre
-	e in a.matriculados and e not in a.aprobados
+	#a.matriculados < 10 and e in a.matriculados and e not in a.aprobados
 	//cambio de estado a futuro
 	a.aprobados' = a.aprobados + e
 	//guarda

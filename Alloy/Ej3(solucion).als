@@ -10,8 +10,8 @@ sig Edificio {
 	edifAscensores: set Ascensor //puede no tener ascensor?
 }
 sig Persona {
-	edificio : lone Edificio,
-	ascensor : lone Ascensor
+	var edificio : lone Edificio,
+	var ascensor : lone Ascensor
 }
 
 //hechos
