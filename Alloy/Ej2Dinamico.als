@@ -8,6 +8,7 @@ sig Cliente {
 one sig Hotel{
 	hab: set Habitacion
 }
+
 sig Habitacion{
 	llaves: set Llave,
 	llaveActual : one Llave,
@@ -27,20 +28,17 @@ all h: Habitacion | h.llaveActual in h.llaves
 //5) Cada cliente ocupa a lo sumo una habitación 
 always all c: Cliente | lone ocupacion.c
 //6) Si un cliente ocupa una habitación, entonces su llave es la llaveActual
-always all c:Habitacion.ocupacion | c.llave = (ocupacion.c).llaveActual
+always all c: Habitacion.ocupacion | c.llave = (ocupacion.c).llaveActual
 // all c:Cliente | some ocupacion.c implies c.llave = (ocupacion.c).llaveActual
 //7) Si un cliente no ocupa una habitación, entonces no tiene llave
 always all c: Cliente- Habitacion.ocupacion | no c.llave
 //all c:Cliente | no ocupacion.c implies no c.llave
 }
 
-
 //predicados
-
-
 pred show(){}
 
-run show for 5
+run show for 5 Cliente, 3 Habitacion
 
 pred checkin (c: Cliente) {
 	//precond: el cliente no esta en otra habitacion
